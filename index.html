@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+
+<div class="main">
+    <h2>Student Registration Form</h2>
+
+    <form id="userForm">
+      <p>Student Name</p>
+      <div class="form-list">
+      <label for="fname">First Name</label>
+      <input type="text" id="fname" name="fname" value="" required><br>
+      </div>
+
+      <div class="form-list">
+      <label for="mname">Middle Name</label>
+      <input type="text" id="mname" name="mname" value=""><br>
+      </div>
+
+      <div class="form-list">
+      <label for="lname">Last Name</label>
+      <input type="text" id="lname" name="lname" value="" required><br>
+      </div>
+
+      <p>Select your Gender</p>
+      <label for="genderMale">Male</label>
+      <input type="radio" id="genderMale" name="mygender" value="Male" required>
+
+      <label for="genderFemale">Female</label>
+      <input type="radio" id="genderFemale" name="mygender" value="Female" required><br>
+
+      <p>Address</p>
+      <div class="form-list">
+      <label for="add"></label>
+      <input type="text" id="add" name="add" value=""><br>
+      </div>
+
+      <p>Mobile Number</p>
+      <div class="form-list">
+      <label for="number"></label>
+      <input type="text" id="number" name="number" value="09"><br>
+      </div>
+
+      <p>Select your Course</p>
+      <input type="radio" id="course1" name="mycourse" value="Diploma in Computer Engineering Technology" required>
+      <label for="course1"> Diploma in Computer Engineering Technology</label><br>
+
+      <input type="radio" id="course2" name="mycourse" value="Diploma in Information Technology" required>
+      <label for="course2"> Diploma in Information Technology</label><br>
+
+      <input type="radio" id="course3" name="mycourse" value="Diploma in Electrical Engineering Technology" required>
+      <label for="course3"> Diploma in Electrical Engineering Technology</label><br>
+
+      <input type="radio" id="course4" name="mycourse" value="Diploma in Mechanical Engineering Technology" required>
+      <label for="course4"> Diploma in Mechanical Engineering Technology</label><br>
+
+      <input type="radio" id="course5" name="mycourse" value="Diploma in Electronics Communications Engineering Technology" required>
+      <label for="course5">Diploma in Electronics Communications Engineering Technology</label><br>
+
+      <input type="radio" id="course6" name="mycourse" value="Diploma in Civil Engineering Technology" required>
+      <label for="course1"> Diploma in Civil Engineering Technology</label><br>
+
+      <input type="radio" id="course7" name="mycourse" value="Diploma in Office Management Technology" required>
+      <label for="course6">Diploma in Office Management Technology</label><br><br>
+
+      <input type="button" value="Submit" class="btn-submit" id="submitBtn" onclick="displayResult()">
+    </form>
+  </div>
+
+  <div id="result" class="result">
+    <h2>Student Form Registration Result</h2>
+    <p id="firstNameDisplay"></p>
+    <p id="middleNameDisplay"></p>
+    <p id="lastNameDisplay"></p>
+    <p id="genderDisplay"></p>
+    <p id="addDisplay"></p>
+    <p id="numberDisplay"></p>
+    <p id="courseDisplay"></p>
+  </div>
+
+<script>
+  function displayResult() {
+    const firstName = document.getElementById("fname").value || "No first name provided";
+    const middleName = document.getElementById("mname").value || "No middle name provided";
+    const lastName = document.getElementById("lname").value || "No last name provided";
+    const gender = document.querySelector("input[name='mygender']:checked")?.value || "Not selected";
+    const add = document.getElementById("add").value || "No address provided";
+    const number = document.getElementById("number").value || "No mobile number provided";
+    const course = document.querySelector("input[name='mycourse']:checked")?.value || "Not selected";
+
+    // Validate mobile number (basic check for length)
+    if (number.length < 11) {
+      alert("Please enter a valid mobile number with 11 digits.");
+      return;
+    }
+
+    document.getElementById("firstNameDisplay").innerText = "First Name: " + firstName;
+    document.getElementById("middleNameDisplay").innerText = "Middle Name: " + middleName;
+    document.getElementById("lastNameDisplay").innerText = "Last Name: " + lastName;
+    document.getElementById("genderDisplay").innerText = "Gender: " + gender;
+    document.getElementById("addDisplay").innerText = "Address: " + add;
+    document.getElementById("numberDisplay").innerText = "Mobile Number: " + number;
+    document.getElementById("courseDisplay").innerText = "Course: " + course;
+
+    // Show the result div
+    document.getElementById("result").style.display = "block";
+
+  document.getElementById("submitBtn").value = "Submitted";
+
+  document.getElementById("submitBtn").disabled = true;
+
+  }
+</script>
+
+</body>
+</html>
